@@ -34,7 +34,6 @@ const MyRecipes = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      // Update the state to remove the deleted recipe from the list
       setMyRecipes(myRecipes.filter((recipe) => recipe._id !== recipeId));
     } catch (error) {
       console.error("Error deleting recipe:", error);
@@ -42,7 +41,15 @@ const MyRecipes = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage: "url('bg..jpeg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+        paddingTop: "20px",
+      }}
+    >
       <h2 className="text-center mt-4">Your Recipes</h2>
       <div className="row mx-4" style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
         {myRecipes.length === 0 ? (
@@ -69,16 +76,13 @@ const MyRecipes = () => {
               </div>
             </div>
           ))
-        )
-        }
+        )}
         <br /> 
-        
         <div style={{ width: "100%", textAlign: "center", marginTop: "20px" }}>
-        <Link to="/create_recipe" className="btn btn-success btn-lg" style={{ display: "inline-block" }}>
+          <Link to="/create_recipe" className="btn btn-success btn-lg" style={{ display: "inline-block" }}>
             + Create
-        </Link>
+          </Link>
         </div>
-      
       </div>
     </div>
   );
